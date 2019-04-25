@@ -2,6 +2,10 @@
 
 prev=a
 
+generatorText="I watched Avengers: Endgame."
+
+SPOILER="Spoiler Alert!"
+
 while ((1))
 do
 	if [[ -e log.txt ]]
@@ -9,8 +13,14 @@ do
 		cur=$( tail -n 1 log.txt )
 		if [[ $cur != $prev ]] 
 		then
-			echo $cur
-			prev=$cur
+			if [[ $cur == "I watched Avengers: Endgame." ]]
+			then
+				echo $SPOILER
+				prev=$cur
+			else
+				echo $cur
+				prev=$cur
+			fi
 		fi
 	fi
 done
